@@ -1,0 +1,42 @@
+---
+import "../styles/global.css";
+import { siteData } from "../data/site";
+
+const { title = "Portfolio", description = siteData.intro.zh } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <script is:inline>
+      // 主题：读取 localStorage，默认 dark
+      const theme = localStorage.getItem("theme") || "dark";
+      document.documentElement.classList.toggle("dark", theme === "dark");
+      // 语言：读取 localStorage，默认 zh
+      const locale = localStorage.getItem("lang") || "zh";
+      document.documentElement.setAttribute("data-locale", locale);
+    </script>
+  </head>
+  <body
+    class="min-h-screen bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100 antialiased transition-colors"
+  >
+    <slot />
+    <script is:inline>
+      window.toggleTheme = () => {
+        const isDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      };
+      window.setLang = (lang) => {
+        localStorage.setItem("lang", lang);
+        document.documentElement.setAttribute("data-locale", lang);
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+---
+import { siteData } from "../data/site";
+const year = new Date().getFullYear();
+---
+
+<footer
+  id="contact"
+  class="mt-16 border-t border-neutral-200 dark:border-neutral-800 py-10"
+>
+  <div class="mx-auto max-w-5xl px-5 flex flex-col items-center gap-4">
+    <div class="flex gap-4 text-sm">
+      {
+        siteData.socials.map((s) => (
+          <a
+            href={s.href}
+            class="hover:text-brand transition-colors"
+            target="_blank"
+            rel="noopener"
+          >
+            {s.label}
+          </a>
+        ))
+      }
+    </div>
+    <p class="text-xs text-neutral-400">© {year} {siteData.name}</p>
+  </div>
+</footer>

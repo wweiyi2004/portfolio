@@ -1,0 +1,23 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import I18nText from "../components/I18nText.astro";
+import { siteData } from "../data/site";
+---
+
+<Base title={`About · ${siteData.name}`}>
+  <Nav />
+  <main class="mx-auto max-w-3xl px-5 py-16">
+    <h1 class="text-3xl font-bold mb-6">
+      <I18nText zh="关于我" en="About Me" />
+    </h1>
+    <p class="text-neutral-600 dark:text-neutral-300 leading-relaxed">
+      <I18nText
+        zh="这里是更详细的个人介绍占位文本，之后替换为你的真实经历、技能与兴趣。"
+        en="Placeholder for a longer personal introduction. Replace with your real background, skills, and interests."
+      />
+    </p>
+  </main>
+  <Footer />
+</Base>

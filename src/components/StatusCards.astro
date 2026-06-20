@@ -1,0 +1,19 @@
+---
+import { siteData } from "../data/site";
+import I18nText from "./I18nText.astro";
+---
+
+<section class="grid sm:grid-cols-2 gap-4 py-6">
+  {
+    siteData.status.map((s) => (
+      <div class="rounded-xl border border-neutral-200 dark:border-neutral-800 p-5">
+        <div class="text-xs uppercase tracking-wide text-neutral-400">
+          <I18nText zh={s.label.zh} en={s.label.en} />
+        </div>
+        <div class="mt-1 font-medium">
+          <I18nText zh={s.value.zh} en={s.value.en} />
+        </div>
+      </div>
+    ))
+  }
+</section>

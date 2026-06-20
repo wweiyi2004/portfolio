@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 语言显隐：默认显示中文，html[data-locale="en"] 时显示英文 */
+[data-i18n] > [data-en] {
+  display: none;
+}
+html[data-locale="en"] [data-i18n] > [data-en] {
+  display: inline;
+}
+html[data-locale="en"] [data-i18n] > [data-zh] {
+  display: none;
+}

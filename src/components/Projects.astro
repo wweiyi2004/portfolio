@@ -1,0 +1,32 @@
+---
+import { siteData } from "../data/site";
+import I18nText from "./I18nText.astro";
+---
+
+<section id="projects" class="py-12">
+  <h2 class="text-2xl font-bold mb-6">
+    <I18nText zh="项目" en="Projects" />
+  </h2>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {
+      siteData.projects.map((p) => (
+        <a
+          href={p.link}
+          class="block rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 hover:border-brand transition-colors"
+        >
+          <h3 class="font-semibold">{p.title}</h3>
+          <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+            <I18nText zh={p.desc.zh} en={p.desc.en} />
+          </p>
+          <div class="mt-3 flex flex-wrap gap-1.5">
+            {p.tags.map((tag) => (
+              <span class="rounded-full bg-neutral-100 dark:bg-neutral-800 px-2 py-0.5 text-xs">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</section>

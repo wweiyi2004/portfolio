@@ -1,0 +1,28 @@
+---
+import { siteData } from "../data/site";
+import I18nText from "./I18nText.astro";
+---
+
+<section class="py-20 flex flex-col items-center text-center gap-6">
+  <img src={siteData.avatar} alt="avatar" class="w-28 h-28 rounded-full shadow-lg" />
+  <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">
+    <I18nText zh={siteData.tagline.zh} en={siteData.tagline.en} />
+  </h1>
+  <p class="max-w-xl text-neutral-500 dark:text-neutral-400">
+    <I18nText zh={siteData.intro.zh} en={siteData.intro.en} />
+  </p>
+  <div class="flex gap-3">
+    <a
+      href="#projects"
+      class="rounded-full bg-brand px-5 py-2 text-white text-sm font-medium hover:opacity-90 transition-opacity"
+    >
+      <I18nText zh="查看项目" en="Explore Projects" />
+    </a>
+    <a
+      href="#contact"
+      class="rounded-full border border-neutral-300 dark:border-neutral-700 px-5 py-2 text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+    >
+      <I18nText zh="联系我" en="Get in Touch" />
+    </a>
+  </div>
+</section>
